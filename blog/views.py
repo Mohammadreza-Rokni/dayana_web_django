@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, render,redirect
 from django.views.generic import TemplateView
 from.models import Article, Portfolio,Contact
 from .form import ContactForm
@@ -51,3 +51,6 @@ def blogs (request):
     }
     return render(request,'blog.html',context)
 
+def article_detail(request, slug):
+    article = get_object_or_404(Article, slug=slug)
+    return render(request, 'article_detail.html', {'article': article})
