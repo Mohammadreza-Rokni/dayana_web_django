@@ -46,11 +46,11 @@ def portfolio (request):
 
 def blogs (request):
     blogs = Article.objects.all()
-    context = {
-        'blogs':blogs
-    }
-    return render(request,'blog.html',context)
+    return render(request,'blog.html',{'blogs':blogs})
 
-def article_detail(request, slug):
-    article = get_object_or_404(Article, slug=slug)
-    return render(request, 'article_detail.html', {'article': article})
+def article_detail(request,id):
+    article = Article.objects.get(id=id)
+    context={
+        "article": article
+    }
+    return render(request, 'article_detail.html', context)
