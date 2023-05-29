@@ -48,6 +48,7 @@ def blogs (request):
     blogs = Article.objects.all()
     return render(request,'blog.html',{'blogs':blogs})
 
+
 def article_detail(request,id):
     article = Article.objects.get(id=id)
     context={
